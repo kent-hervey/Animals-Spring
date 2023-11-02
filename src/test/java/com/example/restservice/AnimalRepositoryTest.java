@@ -1,0 +1,37 @@
+package com.example.restservice;
+
+import com.example.restservice.models.Animal;
+import com.example.restservice.repositories.AnimalRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AnimalRepositoryTest {
+
+    @BeforeEach
+    void setUp() {
+    }
+
+    @Test
+    void findAll() {
+    }
+
+    @Test
+    void findByIdOrElse() {
+    }
+
+    @Test
+    void findById() {
+
+        AnimalRepository animalRepository = new AnimalRepository();
+        Animal animal = animalRepository.findById(1L).orElse(new Animal(0L, "No Animal", 999, 45.3));
+        animal = animal;
+        assertEquals(1L, animal.getId());
+
+    }
+
+    @Test
+    void save() {
+    }
+}
