@@ -1,0 +1,32 @@
+Note that these are the same:
+* -X
+* --request
+
+
+curl --location -X POST 'localhost:8080/api/animals' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Steer",
+    "age": 2,
+    "weight": 300.0
+}'
+
+
+curl --location -X GET 'localhost:8080/api/animals/1'
+
+
+curl --location --request PUT 'localhost:8080/api/animals/1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Dog",
+    "age": 9,
+    "weight": 20.0
+}'
+
+
+curl --location --request DELETE 'localhost:8080/api/animals/4' \
+--header 'Content-Type: application/json' 
+
+curl --location -X GET 'localhost:8080/api/animals'
+
+
