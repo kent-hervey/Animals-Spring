@@ -18,7 +18,7 @@ public class AnimalRepository {
         this.animals = new ArrayList<>();
 
         // Load the fake database of animals
-        try (InputStream is = getClass().getResourceAsStream("/fake_animals.json")) {
+        try (InputStream is = getClass().getResourceAsStream("/persistent_animals.json")) {
             ObjectMapper mapper = new ObjectMapper();
             this.animals = mapper.readValue(is, new TypeReference<List<Animal>>() {});
         } catch (Exception e) {
@@ -39,16 +39,31 @@ public class AnimalRepository {
                 .orElse(null);
     }
 
-    public Optional<Animal> findById(Long id) {
-        return Optional.of(animals.stream()
+    public Animal findById(Long id) {
+        Optional<Animal> optionalAnimail = Optional.of(animals.stream()
                 .filter(a -> a.getId().equals(id))
                 .findFirst()
-                .orElse(new Animal(0L, "No Animal", 999, 45.3)));
+                .orElse(new Animal(-1L, "No Animal", 999, 45.3)));
+        return optionalAnimail.get();
     }
 
     //add another animal
     public Animal save(Animal animal) {
+        animal.setId((long) (animals.size() + 1));
         animals.add(animal);
         return animal;
+
+    }
+
+        public Animal update(Animal animal) {
+            Animal selectedAnimal = animals.get(animal.getId().intValue() - 1);
+            selectedAnimal.setName(animal.getName());
+            selectedAnimal.setAge(animal.getAge());
+            selectedAnimal.setWeight(animal.getWeight());
+            return animal;
+        }
+
+    public void delete(Animal existingAnimal) {
+        animals.remove(existingAnimal);
     }
 }
