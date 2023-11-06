@@ -23,12 +23,9 @@ class AnimalRepositoryTest {
 
     @Test
     void findById() {
-
         AnimalRepository animalRepository = new AnimalRepository();
-        Animal animal = animalRepository.findById(1L).orElse(new Animal(0L, "No Animal", 999, 45.3));
-        animal = animal;
+        Animal animal = animalRepository.findById(1L);
         assertEquals(1L, animal.getId());
-
     }
 
     @Test
