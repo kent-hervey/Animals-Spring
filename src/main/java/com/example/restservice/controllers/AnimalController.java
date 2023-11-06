@@ -3,6 +3,9 @@ package com.example.restservice.controllers;
 import com.example.restservice.services.AnimalService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.restservice.models.Animal;
 
+@Slf4j
 @RequestMapping("/api")
 @RestController
 
 public class AnimalController {
 
 
-    private AnimalService animalService;
+    private final AnimalService animalService;
 
     public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
@@ -32,30 +36,27 @@ public class AnimalController {
 
         List<Animal> animals = new ArrayList<>();
         animals = animalService.findAll();
+        //user Stream to print all names of animals
+        String names = animals.stream().flatMap(animal -> Stream.of(animal.getName() + ",")).collect(Collectors.joining());
+        log.info(">>>>>>\n>>>>>animals: " + names + "\n>>>>>>");
         return ResponseEntity.ok(animals);
     }
 
-    @PostMapping("/animals")
-    public ResponseEntity<Animal> createAnimal(@RequestBody Animal animal) {
-        Animal createdAnimal = animalService.save(animal);
-        return ResponseEntity.ok(createdAnimal);
-    }
-
-//    or
 //    @PostMapping("/animals")
-//    public ResponseEntity<Animal> createAnimal(@RequestBody Animal newAnimal) {
-//        try {
-//            // Call the service to create the new animal
-//            Animal createdAnimal = animalService.createAnimal(newAnimal);
-//
-//            // Return a response with the created animal and a 201 Created status
-//            return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
-//        } catch (Exception e) {
-//            // If there's an issue with the request or creating the animal, return a 400 Bad Request
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//        }
+//    public ResponseEntity<Animal> createAnimal(@RequestBody Animal animal) {
+//        Animal createdAnimal = animalService.save(animal);
+//        return ResponseEntity.ok(createdAnimal);
 //    }
 
+    //    or
+    @PostMapping("/animals")
+    public ResponseEntity<Animal> createAnimal(@RequestBody Animal newAnimal) {
+        // Call the service to create the new animal
+        Animal createdAnimal = animalService.save(newAnimal);
+        log.info(">>>>>>\n>>>>> successfully created animal: " + createdAnimal.getName() + "\n>>>>>>");
+        // Return a response with the created animal and a 201 Created status
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
+    }
 
 
     @GetMapping("/animals/{id}")
@@ -126,15 +127,4 @@ public class AnimalController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save animals to file.");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }

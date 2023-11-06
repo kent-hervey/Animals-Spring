@@ -1,5 +1,6 @@
 package com.example.restservice;
 
+import com.example.restservice.utilities.DemoLogging;
 import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,26 +15,6 @@ public class RestServiceApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext theThing = SpringApplication.run(RestServiceApplication.class, args);
 
-		theThing.getBeanDefinitionNames();
-
-		System.out.println("theThing: " + theThing);
-
-
+		DemoLogging.runDemoLogging();
 	}
-
-//	@Bean
-//	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-//		return args -> {
-//
-//			System.out.println("Let's inspect the beans provided by Spring Boot:");
-//
-//			String[] beanNames = ctx.getBeanDefinitionNames();
-//			Arrays.sort(beanNames);
-//			for (String beanName : beanNames) {
-//				System.out.println(beanName);
-//			}
-//
-//		};
-//	}
-
 }
