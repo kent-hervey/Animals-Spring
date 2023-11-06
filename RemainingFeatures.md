@@ -1,17 +1,15 @@
 Things to add
 
-
-## []: # Path: README.md
-
 List of things to add to code
-- [ ] Add a way to add a new user
-- [ ] Add a global properties file
+- [ ] Add all the unit tests
+- [ ] change delete in Repository so it adds index to maximum of indexes...not just one more than size
+- [ ] Add a global properties file  Configurations https://mkyong.com/spring-boot/spring-boot-configurationproperties-example/ 
 - [ ] Add logger with logging
-- [ ] Investigate having updated animals list written back to json (see below)
-- [ ] Add a kind for each animal....a new field in the json file
+- [ ] Investigate having updated animals list written back to the json file (see below)
+- [ ] Add a kind for each animal..a new field in the json file ... each animal will show its kind and its personal name
 - [ ] Add modifiedDate
-
-
+- [ ] Add handler methods/endpoints that yield metadata such as number of animals, average age...etc
+- 
 
 To save changes to the JSON file, you can use the following steps:
 
