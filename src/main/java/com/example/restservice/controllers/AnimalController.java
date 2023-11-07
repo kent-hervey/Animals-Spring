@@ -34,7 +34,7 @@ public class AnimalController {
     @GetMapping("/animals")
     public ResponseEntity<List<Animal>> getAnimals() {
 
-        List<Animal> animals = new ArrayList<>();
+        List<Animal> animals;
         animals = animalService.findAll();
         //user Stream to print all names of animals
         String names = animals.stream().flatMap(animal -> Stream.of(animal.getName() + ",")).collect(Collectors.joining());
@@ -82,7 +82,7 @@ public class AnimalController {
         existingAnimal.setAge(updatedAnimal.getAge());
 
         // Save the updated animal
-        updatedAnimal = animalService.upate(existingAnimal);
+        updatedAnimal = animalService.update(existingAnimal);
 
         return ResponseEntity.ok(updatedAnimal);
     }

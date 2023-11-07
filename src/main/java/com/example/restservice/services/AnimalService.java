@@ -2,11 +2,11 @@ package com.example.restservice.services;
 
 import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class AnimalService  {
 
@@ -14,8 +14,9 @@ public class AnimalService  {
 
 
     public List<Animal> findAll() {
-        List<Animal> animals = new ArrayList<>();
+        List<Animal> animals;
         animals = animalRepository.findAll();
+        log.info("Service class found all animals");
         return animals;
     }
 
@@ -29,7 +30,7 @@ public class AnimalService  {
         return animalRepository.save(animal);
     }
 
-    public Animal upate(Animal animal) {
+    public Animal update(Animal animal) {
         return animalRepository.update(animal);
     }
 
