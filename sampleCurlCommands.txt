@@ -3,7 +3,7 @@ Note that these are the same:
 * --request
 
 
-curl --location -X POST 'localhost:8080/api/animals' \
+curl -X POST --location 'localhost:8080/api/animals' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "Steer",
@@ -12,10 +12,10 @@ curl --location -X POST 'localhost:8080/api/animals' \
 }'
 
 
-curl --location -X GET 'localhost:8080/api/animals/1'
+curl  -X GET --location' localhost:8080/api/animals/1'
 
 
-curl --location --request PUT 'localhost:8080/api/animals/1' \
+curl  --request PUT --location 'localhost:8080/api/animals/1' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "Dog",
@@ -24,9 +24,9 @@ curl --location --request PUT 'localhost:8080/api/animals/1' \
 }'
 
 
-curl --location --request DELETE 'localhost:8080/api/animals/4' \
+curl ---request DELETE -location 'localhost:8080/api/animals/4' \
 --header 'Content-Type: application/json' 
 
-curl --location -X GET 'localhost:8080/api/animals'
+curl -X GET --location 'localhost:8080/api/animals'
 
 
