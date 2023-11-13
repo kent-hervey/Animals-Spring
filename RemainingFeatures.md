@@ -1,8 +1,8 @@
 Things to add
 
-List of things to add to code
+List of things to add to code--most of these need scratch code already implemented
 - [ ] Add all the unit tests
-- [ ] change addAnimal in Repository it adds index to maximum of indexes...not just one more than size
+- [X ] change addAnimal in Repository it adds index to maximum of indexes...not just one more than size
 - [ ] Add a global properties file  Configurations https://mkyong.com/spring-boot/spring-boot-configurationproperties-example/ 
 - [ ] Add logger with logging..simple implementation complete 11/12/2023
 - [ ] Investigate having updated animals list written back to the json file (see below)
@@ -10,8 +10,8 @@ List of things to add to code
 - [ ] Add modifiedDate
 - [ ] Add handler methods/endpoints that yield metadata such as number of animals, average age...etc
 - [ ] Add a new endpoint that returns a list of animals that meet certain criteria
-- [ ] Create an independent Java console project that will cosume the endpoints of this project.  User can select a number from the menu then enter data, then will see returned information
-- 
+- [ ] Create an independent Java console project that will consume the endpoints of this project.  User can select a number from the menu then enter data, then will see returned information
+- [ ] Add a DTO class
 - 
 
 To save changes to the JSON file, you can use the following steps:
