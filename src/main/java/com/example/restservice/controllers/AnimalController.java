@@ -1,7 +1,6 @@
 package com.example.restservice.controllers;
 
 import com.example.restservice.services.AnimalService;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -52,7 +51,7 @@ public class AnimalController {
     @PostMapping("/animals")
     public ResponseEntity<Animal> createAnimal(@RequestBody Animal newAnimal) {
         // Call the service to create the new animal
-        Animal createdAnimal = animalService.save(newAnimal);
+        Animal createdAnimal = animalService.addNew(newAnimal);
         log.info(">>>>>>\n>>>>> successfully created animal: " + createdAnimal.getName() + "\n>>>>>>");
         // Return a response with the created animal and a 201 Created status
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);

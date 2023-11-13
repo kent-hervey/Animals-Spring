@@ -7,8 +7,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+@Slf4j
 @Repository
 public class AnimalRepository {
 
@@ -48,11 +50,18 @@ public class AnimalRepository {
     }
 
     //add another animal
-    public Animal save(Animal animal) {
-        animal.setId((long) (animals.size() + 1));
+    public Animal addToFile(Animal animal) {
+        String animalsIds = findAll().stream()
+                .map(a -> a.getId().toString())
+                .reduce("", (a, b) -> a + ", " + b);
+        log.info("List of animal Ids:  " + animalsIds);
+        Integer maxId = findAll().stream()
+                .map(a -> a.getId().intValue())
+                .max(Integer::compare).get();
+        log.info("Max Id:  " + maxId);
+        animal.setId((long) (maxId + 1));
         animals.add(animal);
         return animal;
-
     }
 
         public Animal update(Animal animal) {
