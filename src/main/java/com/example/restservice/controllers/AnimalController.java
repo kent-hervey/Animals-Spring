@@ -23,7 +23,6 @@ import com.example.restservice.models.Animal;
 
 public class AnimalController {
 
-
     private final AnimalService animalService;
 
     public AnimalController(AnimalService animalService) {
@@ -41,13 +40,6 @@ public class AnimalController {
         return ResponseEntity.ok(animals);
     }
 
-//    @PostMapping("/animals")
-//    public ResponseEntity<Animal> createAnimal(@RequestBody Animal animal) {
-//        Animal createdAnimal = animalService.save(animal);
-//        return ResponseEntity.ok(createdAnimal);
-//    }
-
-    //    or
     @PostMapping("/animals")
     public ResponseEntity<Animal> createAnimal(@RequestBody Animal newAnimal) {
         // Call the service to create the new animal
@@ -56,7 +48,6 @@ public class AnimalController {
         // Return a response with the created animal and a 201 Created status
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
     }
-
 
     @GetMapping("/animals/{id}")
     public ResponseEntity<Animal> getAnimalById(@PathVariable Long id) {
@@ -86,14 +77,6 @@ public class AnimalController {
         return ResponseEntity.ok(updatedAnimal);
     }
 
-
-//    @GetMapping("/animals/{id}")
-//    public ResponseEntity<Animal> getAnimalById(@PathVariable Long id) {
-//        Animal animal = animalService.findById(id);
-//        System.out.println();
-//        return ResponseEntity.ok(animal);
-//    }
-
     @DeleteMapping("/animals/{id}")
     public ResponseEntity<Animal> deleteAnimal(@PathVariable Long id) {
         System.out.println("received id is: " + id);
@@ -107,23 +90,5 @@ public class AnimalController {
         System.out.println("deleting animal: " + existingAnimal.getName());
         animalService.delete(existingAnimal);
         return ResponseEntity.ok(existingAnimal);
-    }
-
-
-//possible method to save list of animals to json file
-//    @PostMapping("/animals")
-
-
-    @PostMapping("/animals/save-to-file")
-    public ResponseEntity<String> saveAnimalsToFile() {
-        try {
-            // Call your saveAnimalsToFile() method here
-
-            // Return a success response
-            return ResponseEntity.ok("Animals saved to file.");
-        } catch (Exception e) {
-            // Handle any exceptions and return an appropriate response, e.g., 500 Internal Server Error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save animals to file.");
-        }
     }
 }
