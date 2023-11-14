@@ -2,6 +2,9 @@ Note that these are the same:
 * -X
 * --request
 
+curl -X GET --location 'localhost:8080/api/animals'
+
+curl  -X GET --location' localhost:8080/api/animals/1'
 
 curl -X POST --location 'localhost:8080/api/animals' \
 --header 'Content-Type: application/json' \
@@ -12,7 +15,7 @@ curl -X POST --location 'localhost:8080/api/animals' \
 }'
 
 
-curl  -X GET --location' localhost:8080/api/animals/1'
+
 
 
 curl  --request PUT --location 'localhost:8080/api/animals/1' \
@@ -24,9 +27,10 @@ curl  --request PUT --location 'localhost:8080/api/animals/1' \
 }'
 
 
-curl ---request DELETE -location 'localhost:8080/api/animals/4' \
+curl ---request DELETE --location 'localhost:8080/api/animals/4' \
 --header 'Content-Type: application/json' 
 
-curl -X GET --location 'localhost:8080/api/animals'
+curl --request POST --location 'localhost:8080/api/save'
+
 
 
