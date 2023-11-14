@@ -27,14 +27,26 @@ public class AnimalService  {
     }
 
     public Animal addNew(Animal animal) {
-        return animalRepository.addToFile(animal);
+        return animalRepository.addAnimalToList(animal);
     }
 
     public Animal update(Animal animal) {
-        return animalRepository.update(animal);
+        return animalRepository.updateAnimalInList(animal);
     }
 
     public void delete(Animal existingAnimal) {
         animalRepository.delete(existingAnimal);
+    }
+
+    public String  persistChanges() {
+        System.out.println("Inside AnimalService.persistChanges()....");
+        String fromRepository = "";
+        try {
+            fromRepository = animalRepository.saveAnimalsToFile();
+            log.info("Data coming back from repository:  " + fromRepository);
+        } catch (Exception e) {
+            log.error("Failed to persist changes to the file", e);
+        }
+        return "Changes persisted via AnimalService.persistChanges()\n from Repository " + fromRepository;
     }
 }
