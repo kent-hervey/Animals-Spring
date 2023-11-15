@@ -5,7 +5,7 @@ List of things to add to code--most of these need scratch code already implement
 - [X ] change addAnimal in Repository it adds index to maximum of indexes...not just one more than size
 - [ ] Add a global properties file  Configurations https://mkyong.com/spring-boot/spring-boot-configurationproperties-example/ 
 - [ ] Add logger with logging..simple implementation complete 11/12/2023
-- [ ] Investigate having updated animals list written back to the json file (see below)
+- [X] Investigate having updated animals list written back to the json file (see below) done 11/14/23
 - [ ] change repository so if the new json file cannot be found, it will use originalSeedData.json in resources
 - [ ] Add a kind for each animal..a new field in the json file ... each animal will show its kind and its personal name
 - [ ] Add modifiedDate
