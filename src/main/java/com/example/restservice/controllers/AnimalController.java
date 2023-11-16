@@ -1,5 +1,7 @@
 package com.example.restservice.controllers;
 
+import com.example.restservice.dtos.AnimalDTO;
+import com.example.restservice.services.AnimalDtoService;
 import com.example.restservice.services.AnimalService;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,9 +26,12 @@ import com.example.restservice.models.Animal;
 public class AnimalController {
 
     private final AnimalService animalService;
+    private final AnimalDtoService animalDtoService;
 
-    public AnimalController(AnimalService animalService) {
+
+    public AnimalController(AnimalService animalService, AnimalDtoService animalDtoService) {
         this.animalService = animalService;
+        this.animalDtoService = animalDtoService;
     }
 
     @GetMapping("/animals")
@@ -91,4 +96,26 @@ public class AnimalController {
         animalService.delete(existingAnimal);
         return ResponseEntity.ok(existingAnimal);
     }
+
+    @GetMapping("/animalsFood")
+    public ResponseEntity<List<AnimalDTO>> getAnimalsFood() {
+
+        List<AnimalDTO> animalsDTO;
+        animalsDTO = animalDtoService.findAllDTO();
+        //user Stream to print all names of animals
+        String names = animalsDTO.stream().flatMap(animal -> Stream.of(animal.getName() + ",")).collect(Collectors.joining());
+        log.info(">>>>>>\n>>>>>animals: " + names + "\n>>>>>>");
+        return ResponseEntity.ok(animalsDTO);
+    }
+
+
+    @GetMapping("/animalsFood/{id}")
+    public ResponseEntity<AnimalDTO> getAnimalFoodById(@PathVariable Long id) {
+        AnimalDTO animalDTO = animalDtoService.findById(id);
+        animalDTO.getModifiedDate();
+        System.out.println(animalDTO.getModifiedDate());
+        System.out.println(animalDTO);
+        return ResponseEntity.ok(animalDTO);
+    }
+
 }
