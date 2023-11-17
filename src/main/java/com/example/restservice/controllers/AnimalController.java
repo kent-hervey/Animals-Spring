@@ -75,6 +75,7 @@ public class AnimalController {
         existingAnimal.setName(updatedAnimal.getName());
         existingAnimal.setWeight(updatedAnimal.getWeight());
         existingAnimal.setAge(updatedAnimal.getAge());
+        existingAnimal.setKind(updatedAnimal.getKind());
 
         // Save the updated animal
         updatedAnimal = animalService.update(existingAnimal);
