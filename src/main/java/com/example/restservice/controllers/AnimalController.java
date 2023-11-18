@@ -76,11 +76,7 @@ public class AnimalController {
         existingAnimal.setWeight(updatedAnimal.getWeight());
         existingAnimal.setAge(updatedAnimal.getAge());
         existingAnimal.setKind(updatedAnimal.getKind());
-
-        // Save the updated animal
-        updatedAnimal = animalService.update(existingAnimal);
-
-        return ResponseEntity.ok(updatedAnimal);
+        return ResponseEntity.ok(animalService.update(existingAnimal));
     }
 
     @DeleteMapping("/animals/{id}")
