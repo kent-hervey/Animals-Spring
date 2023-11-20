@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  * It will have methods for:
  * 1.  Saving to file the current state of the database aka the animals ArrayList
  * 2.  See one file
- *
  */
 public class FileController {
 
@@ -43,6 +42,7 @@ public class FileController {
         }
     }
 
+//TODO remove all the below comments
 
 //Notes on how all this could work:
 

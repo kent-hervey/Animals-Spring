@@ -4,8 +4,6 @@ import com.example.restservice.enums.Kind;
 import java.util.Date;
 import java.util.Objects;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 
 @Component
 public class AnimalDTO {
@@ -17,11 +15,9 @@ public class AnimalDTO {
     private Date modifiedDate;
     private String feedType;
 
-    // Constructors, getters, setters
-
     public AnimalDTO() {
     }
-
+    //Do we need all three of these constructors?
     public AnimalDTO(Long id, String name, Kind kind, Integer age, Double weight, Date modifiedDate, String feedType) {
         this.id = id;
         this.name = name;
@@ -31,8 +27,21 @@ public class AnimalDTO {
         this.modifiedDate = modifiedDate;
         this.feedType = feedType;
     }
-
-
+    public AnimalDTO(String name, Kind kind, Integer age, Double weight, Date modifiedDate, String feedType) {
+        this.name = name;
+        this.kind = kind;
+        this.age = age;
+        this.weight = weight;
+        this.modifiedDate = modifiedDate;
+        this.feedType = feedType;
+    }
+    public AnimalDTO(String name, Kind kind, Integer age, Double weight, String feedType) {
+        this.name = name;
+        this.kind = kind;
+        this.age = age;
+        this.weight = weight;
+        this.feedType = feedType;
+    }
 
     public Long getId() {
         return id;

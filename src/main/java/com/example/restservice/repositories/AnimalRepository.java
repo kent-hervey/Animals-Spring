@@ -16,8 +16,10 @@ import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+//TODO:  Experiment with using interfaces here and elsewhere.  See https://www.baeldung.com/spring-data-repositories and
+// https://docs.google.com/document/d/1MOsCW9dj_82jn0RiDYpPgVZN4TjxXE5ATruD85Nuz2M/edit
 @Slf4j
-@Repository
+@Repository  //TODO:  check to see if this is actually needed/being used
 public class AnimalRepository {
 
     public static final String DATA_PERSISTENT_ANIMALS_JSON = "data/persistent_animals.json";
@@ -26,7 +28,7 @@ public class AnimalRepository {
     public AnimalRepository() {
         this.animals = new ArrayList<>();
 
-        // Load the fake database of animals
+        // Load the Animals List from the JSON file
         try (InputStream is = new FileInputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
             ObjectMapper mapper = new ObjectMapper();
             this.animals = mapper.readValue(is, new TypeReference<List<Animal>>() {
@@ -41,7 +43,6 @@ public class AnimalRepository {
         return animals;
     }
 
-    //find animal by id
     public Animal findByIdOrElse(Long id) {
         return animals.stream()
                 .filter(a -> a.getId().equals(id))
@@ -57,7 +58,6 @@ public class AnimalRepository {
         return optionalAnimail.get();
     }
 
-    //add another animal
     public Animal addAnimalToList(Animal animal) {
         String animalsIds = findAll().stream()
                 .map(a -> a.getId().toString())
@@ -83,7 +83,7 @@ public class AnimalRepository {
     public void delete(Animal existingAnimal) {
         animals.remove(existingAnimal);
     }
-
+    //TODO Is this method doing too much?  Should it be broken up into smaller methods?
     public String saveAnimalsToFile() throws Exception {
         String fileInfo = "";
         ObjectMapper mapper = new ObjectMapper();
@@ -93,7 +93,6 @@ public class AnimalRepository {
         // Write the JSON to the file
         try (OutputStream os = new FileOutputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
             os.write(json.getBytes());
-            String thing = os.toString();
             log.info("Animals saved to file.");
             // Get the last save modified date and file size
             File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
@@ -101,7 +100,6 @@ public class AnimalRepository {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date lastModifiedDate = new Date(lastModified);
             String humanReadableLastModifiedDate = sdf.format(lastModifiedDate);
-
             long fileSize = file.length();
             fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
             System.out.println(fileInfo);

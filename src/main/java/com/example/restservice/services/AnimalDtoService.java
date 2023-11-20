@@ -23,6 +23,7 @@ public class AnimalDtoService {
 
     private Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
 
+    //TODO Does this method need to be called in constructor and in method findAllDTO()?
     public AnimalDtoService(AnimalRepository animalRepository, AnimalDTO animalDTO) {
         this.animalRepository = animalRepository;
         this.animalDTO = animalDTO;
@@ -34,9 +35,7 @@ public class AnimalDtoService {
             initializeKindToFeedTypeMap();
         }
         List<AnimalDTO> animalsDTO = new ArrayList<>();
-        List<Animal> animals = new ArrayList<>();
-        animals = animalRepository.findAll();
-        for(Animal animal : animals) {
+        for(Animal animal : animalRepository.findAll()) {
             AnimalDTO collecting = new AnimalDTO();
             collecting.setId(animal.getId());
             collecting.setName(animal.getName());
@@ -54,7 +53,6 @@ public class AnimalDtoService {
     }
 
     public AnimalDTO findById(Long id) {
-        AnimalDTO animalDTO = new AnimalDTO();
         Animal animal = animalRepository.findById(id);
         animalDTO.setId(animal.getId());
         animalDTO.setName(animal.getName());
