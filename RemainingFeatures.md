@@ -13,6 +13,9 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] Add a new endpoint that returns a list of animals that meet certain criteria
 - [ ] Create an independent Java console project that will consume the endpoints of this project.  User can select a number from the menu then enter data, then will see returned information
 - [ ] Add a DTO class
+- [ ] change from DATE to LocalDateTime
+- [ ] fix the conroller so it returns something helpful if the submitted kind is invalid
+-    
 - 
 
 To save changes to the JSON file, you can use the following steps:
