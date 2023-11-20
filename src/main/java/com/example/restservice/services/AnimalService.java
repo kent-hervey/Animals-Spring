@@ -1,8 +1,7 @@
 package com.example.restservice.services;
 
 import com.example.restservice.models.Animal;
-import com.example.restservice.repositories.AnimalRepository;
-import java.util.Date;
+import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import com.example.restservice.enums.Kind;
 @Service
 public class AnimalService  {
 
-    AnimalRepository animalRepository = new AnimalRepository();
+    AnimalRepositoryImpl animalRepository = new AnimalRepositoryImpl();
 
     public List<Animal> findAll() {
         List<Animal> animals;

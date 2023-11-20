@@ -2,7 +2,7 @@ package com.example.restservice.services;
 
 import com.example.restservice.enums.Kind;
 import com.example.restservice.models.Animal;
-import com.example.restservice.repositories.AnimalRepository;
+import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 
-public class AnimalDtoServiceTest {
+class AnimalDtoServiceTest {
     @Mock
-    private AnimalRepository animalRepository;
+    private AnimalRepositoryImpl animalRepositoryImpl;
     @Mock
     private AnimalDTO animalDTO;
     private AnimalService animalService;
@@ -29,10 +29,10 @@ public class AnimalDtoServiceTest {
     @Test
     void find_all_returns_animals_dto_list () {
         //Given
-        AnimalRepository animalRepositoryMock = mock(AnimalRepository.class);
-        animalRepositoryMock.addAnimalToList(new Animal(1L, Kind.CAT, "CAT", 2, 5.0, new Date()));
+        AnimalRepositoryImpl animalRepositoryImplMock = mock(AnimalRepositoryImpl.class);
+        animalRepositoryImplMock.addAnimalToList(new Animal(1L, Kind.CAT, "CAT", 2, 5.0, new Date()));
 
-        AnimalDtoService subject = new AnimalDtoService(animalRepositoryMock, animalDTO);
+        AnimalDtoService subject = new AnimalDtoService(animalRepositoryImplMock, animalDTO);
         Date theDate = new Date(123, 0, 1, 12, 0, 0); // Note: Year 123 is equivalent to 2023
 
         List<Animal> animals = new ArrayList<>();
@@ -40,7 +40,7 @@ public class AnimalDtoServiceTest {
         animals.add(new Animal(2L, Kind.CAT, "CAT", 2, 5.0, theDate));
 
 
-        Mockito.doReturn(animals).when(animalRepositoryMock).findAll();
+        Mockito.doReturn(animals).when(animalRepositoryImplMock).findAll();
 
         List<AnimalDTO> expected = new ArrayList<>();
 

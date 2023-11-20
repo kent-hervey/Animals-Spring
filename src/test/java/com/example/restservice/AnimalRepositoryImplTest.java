@@ -1,13 +1,13 @@
 package com.example.restservice;
 
 import com.example.restservice.models.Animal;
-import com.example.restservice.repositories.AnimalRepository;
+import com.example.restservice.repositories.AnimalRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnimalRepositoryTest {
+class AnimalRepositoryImplTest {
 
     @BeforeEach
     void setUp() {
@@ -23,8 +23,8 @@ class AnimalRepositoryTest {
 
     @Test
     void findById() {
-        AnimalRepository animalRepository = new AnimalRepository();
-        Animal animal = animalRepository.findById(1L);
+        AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
+        Animal animal = animalRepositoryImpl.findById(1L);
         assertEquals(1L, animal.getId());
     }
 
