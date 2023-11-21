@@ -23,7 +23,7 @@ public class EnumService {
             kindsString.add(enumKind.toString());
         }
         log.info(">>>>>>\n>>>>>kindsString: " + kindsString + "\n>>>>>>");
-        return String.join(", ", kindsString);
+        return String.join(", ", kindsString) + ". ";
     }
 
 

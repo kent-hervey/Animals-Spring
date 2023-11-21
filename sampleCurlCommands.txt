@@ -4,32 +4,39 @@ Note that these are the same:
 
 curl -X GET --location 'localhost:8080/api/animals'
 
-curl  -X GET --location' localhost:8080/api/animals/1'
+curl -X GET --location 'localhost:8080/api/animalsWithFeedType'
+
+curl  -X GET --location 'localhost:8080/api/animals/1'
+
+curl  -X GET --location 'localhost:8080/api/animalsWithFeedType/1'
 
 curl -X POST --location 'localhost:8080/api/animals' \
 --header 'Content-Type: application/json' \
 --data '{
-    "name": "Steer",
+    "kind": "CAT",
+    "name": "Timmy",
     "age": 2,
-    "weight": 300.0
+    "weight": 4.0
 }'
 
 
-
-
-
-curl  --request PUT --location 'localhost:8080/api/animals/1' \
+curl  --request PUT --location 'localhost:8080/api/animals/4' \
 --header 'Content-Type: application/json' \
 --data '{
-    "name": "Dog",
+    "kind": "DOG",
+    "name": "Rover",
     "age": 9,
     "weight": 20.0
 }'
 
 
-curl ---request DELETE --location 'localhost:8080/api/animals/4' \
+curl --request DELETE --location 'localhost:8080/api/animals/4' \
 --header 'Content-Type: application/json' 
 
+
+curl --request GET --location 'localhost:8080/api/animalKinds'
+
+//saves to json file
 curl --request POST --location 'localhost:8080/api/save'
 
 
