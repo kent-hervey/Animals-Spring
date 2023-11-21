@@ -17,7 +17,7 @@ public class EnumService {
         return kinds;
     }
 
-    public String fetchKindsStrings() {
+    public String fetchKindsAsStrings() {
         List<String> kindsString = new ArrayList<>();
         for(Kind enumKind : Kind.values()){
             kindsString.add(enumKind.toString());
@@ -25,6 +25,4 @@ public class EnumService {
         log.info(">>>>>>\n>>>>>kindsString: " + kindsString + "\n>>>>>>");
         return String.join(", ", kindsString) + ". ";
     }
-
-
 }

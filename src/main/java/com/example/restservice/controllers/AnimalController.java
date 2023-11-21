@@ -108,7 +108,7 @@ public class AnimalController {
 
     @GetMapping("animalKinds")
     public String getKinds() {
-        return enumService.fetchKindsStrings();
+        return enumService.fetchKindsAsStrings();
     }
 
 
