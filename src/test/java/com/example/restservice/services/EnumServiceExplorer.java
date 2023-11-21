@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class EnumServiceExplorer {
-//Note the below is not literally a unit test.  It is used for exploration or dry runs. One reason is that we are using the actual Kinds enum, not a mock.
+    //Note the below is not literally a unit test.  It is used for exploration or dry runs. One reason is that we are using the actual Kinds enum, not a mock.
     @Test
     void exploreKinds() {
         EnumService enumService = new EnumService();
