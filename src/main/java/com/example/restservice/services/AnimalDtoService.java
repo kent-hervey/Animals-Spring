@@ -3,9 +3,10 @@ package com.example.restservice.services;
 import com.example.restservice.dtos.AnimalDTO;
 import com.example.restservice.enums.Kind;
 import com.example.restservice.models.Animal;
-import com.example.restservice.repositories.AnimalRepositoryImpl;
+import com.example.restservice.repositories.AnimalRepository;
+import java.nio.channels.NonWritableChannelException;
 import java.util.ArrayList;
-import java.util.EnumMap;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,15 +18,14 @@ import org.springframework.stereotype.Service;
 
 public class AnimalDtoService {
 
-    AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
+    AnimalRepository animalRepository = new AnimalRepository();
     AnimalDTO animalDTO = new AnimalDTO();
 
-    //TODO change to private final Map<Kind, String> kindToFeedTypeMap = new EnumMap<>(Kind.class
-    private final Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
+    private Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
 
     //TODO Does this method need to be called in constructor and in method findAllDTO()?
-    public AnimalDtoService(AnimalRepositoryImpl animalRepositoryImpl, AnimalDTO animalDTO) {
-        this.animalRepositoryImpl = animalRepositoryImpl;
+    public AnimalDtoService(AnimalRepository animalRepository, AnimalDTO animalDTO) {
+        this.animalRepository = animalRepository;
         this.animalDTO = animalDTO;
         initializeKindToFeedTypeMap();
     }
@@ -35,7 +35,7 @@ public class AnimalDtoService {
             initializeKindToFeedTypeMap();
         }
         List<AnimalDTO> animalsDTO = new ArrayList<>();
-        for(Animal animal : animalRepositoryImpl.findAll()) {
+        for(Animal animal : animalRepository.findAll()) {
             AnimalDTO collecting = new AnimalDTO();
             collecting.setId(animal.getId());
             collecting.setName(animal.getName());
@@ -53,7 +53,7 @@ public class AnimalDtoService {
     }
 
     public AnimalDTO findById(Long id) {
-        Animal animal = animalRepositoryImpl.findById(id);
+        Animal animal = animalRepository.findById(id);
         animalDTO.setId(animal.getId());
         animalDTO.setName(animal.getName());
         animalDTO.setKind(animal.getKind());
