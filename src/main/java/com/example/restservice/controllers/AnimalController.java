@@ -3,6 +3,7 @@ package com.example.restservice.controllers;
 import com.example.restservice.dtos.AnimalDTO;
 import com.example.restservice.services.AnimalDtoService;
 import com.example.restservice.services.AnimalService;
+import com.example.restservice.services.EnumService;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,9 +28,12 @@ public class AnimalController {
     private final AnimalService animalService;
     private final AnimalDtoService animalDtoService;
 
-    public AnimalController(AnimalService animalService, AnimalDtoService animalDtoService) {
+    private final EnumService enumService;
+
+    public AnimalController(AnimalService animalService, AnimalDtoService animalDtoService, EnumService enumService) {
         this.animalService = animalService;
         this.animalDtoService = animalDtoService;
+        this.enumService = enumService;
     }
 
     @GetMapping("/animals")
@@ -48,9 +52,7 @@ public class AnimalController {
         return ResponseEntity.ok(animal);
     }
 
-    //TODO change Food to WithFeedType
-
-    @GetMapping("/animalsFood")
+    @GetMapping("/animalsWithFeedType")         
     public ResponseEntity<List<AnimalDTO>> getAnimalWithFeedType() {
         List<AnimalDTO> animalsDTO;
         animalsDTO = animalDtoService.findAllDTO();
@@ -59,8 +61,7 @@ public class AnimalController {
         return ResponseEntity.ok(animalsDTO);
     }
 
-    //TODO change Food to WithFeedType
-    @GetMapping("/animalsFood/{id}")
+    @GetMapping("/animalsWithFeedType/{id}")
     public ResponseEntity<AnimalDTO> getAnimalWithFeedTypeById(@PathVariable Long id) {
         AnimalDTO animalDTO = animalDtoService.findById(id);
         log.info("Found animal:  " + animalDTO);
@@ -105,6 +106,13 @@ public class AnimalController {
         return ResponseEntity.ok(existingAnimal);
     }
 
-    //TODO need a controller method to return list of all valid animal kinds
+    @GetMapping("animalKinds")
+    public String getKinds() {
+        return enumService.fetchKindsStrings();
+    }
+
+
+
+
 
 }
