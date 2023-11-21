@@ -10,14 +10,15 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] fix the controller, so it returns something helpful if the submitted kind is invalid aka Using a custom http response entity to return a custom error message 
 - [ ] Add a custom exception handler to handle exceptions
 - [ ] Add Integration tests with Spring Boot Test
+- [ ] Possibly make a controller handler method that re-sets the Animals list to the persistant_animals.json file
 - Work the TODOs in the code including
   - [ ] //TODO see if this could also work:  if (enumKind.equalsIgnoreCase(kind)
-  - [ ] In controller //TODO change Food to WithFeedType
+  - [X] In controller //TODO change Food to WithFeedType
   - [ ] See Repository for use of @Repository and interfaces
   - [ ] Animal repository method seems too long: saveAnimalsToFile()
   - [ ] In controller handle invalid kind
   - [ ] In controller handle invalid id coming in
-  - [ ] Add handler method to retun all valid kinds
+  - [X] Add handler method to retun all valid kinds
 - [X] change addAnimal in Repository it adds index to maximum of indexes...not just one more than size
 - [X] Add logger with logging..simple implementation complete 11/12/2023
 - [X] Investigate having updated animals list written back to the json file (see below) done 11/14/23
