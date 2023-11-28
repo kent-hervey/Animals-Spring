@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
 //TODO:  Experiment with using interfaces here and elsewhere.  See https://www.baeldung.com/spring-data-repositories and
 // https://docs.google.com/document/d/1MOsCW9dj_82jn0RiDYpPgVZN4TjxXE5ATruD85Nuz2M/edit
 @Slf4j
-//TODO:  check to see if this is actually needed/being used
 @Repository
 public class AnimalRepositoryImpl implements AnimalRepository {
 
