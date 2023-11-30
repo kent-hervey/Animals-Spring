@@ -4,6 +4,7 @@ import com.example.restservice.dtos.AnimalDTO;
 import com.example.restservice.enums.Kind;
 import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
+import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.nio.channels.NonWritableChannelException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 public class AnimalDtoService {
 
-    AnimalRepository animalRepository = new AnimalRepository();
+    AnimalRepository animalRepository = new AnimalRepositoryImpl();
     AnimalDTO animalDTO = new AnimalDTO();
 
     private Map<Kind, String> kindToFeedTypeMap = new HashMap<>();

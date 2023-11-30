@@ -17,12 +17,14 @@ public class EnumService {
         return kinds;
     }
 
-    public String fetchKindsAsStrings() {
+    public String fetchKindsStrings() {
         List<String> kindsString = new ArrayList<>();
         for(Kind enumKind : Kind.values()){
             kindsString.add(enumKind.toString());
         }
         log.info(">>>>>>\n>>>>>kindsString: " + kindsString + "\n>>>>>>");
-        return String.join(", ", kindsString) + ". ";
+        return String.join(", ", kindsString);
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.example.restservice.services;
 
 import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
+import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import com.example.restservice.enums.Kind;
 @Service
 public class AnimalService  {
 
-    AnimalRepository animalRepository = new AnimalRepository();
+    AnimalRepository animalRepository = new AnimalRepositoryImpl();
 
     public List<Animal> findAll() {
         List<Animal> animals;

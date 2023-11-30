@@ -17,7 +17,7 @@ class EnumServiceExplorer {
     @Test
     void exploreKindsStrings() {
         EnumService enumService = new EnumService();
-        String result = enumService.fetchKindsAsStrings();
+        String result = enumService.fetchKindsStrings();
         System.out.println("Here is the result:  " + result);
     }
 }
