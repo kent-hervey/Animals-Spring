@@ -12,6 +12,7 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] Add Integration tests with Spring Boot Test
 - [ ] Liberally add Explorer classes/methods to run units of code
 - [O] Consider pulling the retrieve and save to file methods out of the repository and putting them in a separate class...experimented then decided no: 11/30/23
+- [ ] Possibly make a controller handler method that re-sets the Animals list to the persistant_animals.json file
 - Work the TODOs in the code including
   - [ ] //TODO see if this could also work:  if (enumKind.equalsIgnoreCase(kind)
   - [X] In controller //TODO change Food to WithFeedType...11/21/23
