@@ -5,7 +5,6 @@ import com.example.restservice.enums.Kind;
 import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
 import com.example.restservice.repositories.AnimalRepositoryImpl;
-import java.nio.channels.NonWritableChannelException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,10 +18,10 @@ import org.springframework.stereotype.Service;
 
 public class AnimalDtoService {
 
-    AnimalRepository animalRepository = new AnimalRepositoryImpl();
+    AnimalRepository animalRepository;
     AnimalDTO animalDTO = new AnimalDTO();
 
-    private Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
+    private final Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
 
     //TODO Does this method need to be called in constructor and in method findAllDTO()?
     public AnimalDtoService(AnimalRepository animalRepository, AnimalDTO animalDTO) {

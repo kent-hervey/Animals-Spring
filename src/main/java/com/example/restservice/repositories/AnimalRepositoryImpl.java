@@ -91,7 +91,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     //TODO Is this method doing too much?  Should it be broken up into smaller methods?
     @Override
     public String saveAnimalsToFile() throws Exception {
-        String fileInfo = "no info, yet";
+        String fileInfo;
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(findAll());
         log.info("json content to write to file is: " + json);

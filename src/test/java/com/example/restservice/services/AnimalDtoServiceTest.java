@@ -6,6 +6,7 @@ import com.example.restservice.repositories.AnimalRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import com.example.restservice.dtos.AnimalDTO;
@@ -33,7 +34,8 @@ public class AnimalDtoServiceTest {
         animalRepositoryMock.addAnimalToList(new Animal(1L, Kind.CAT, "CAT", 2, 5.0, new Date()));
 
         AnimalDtoService subject = new AnimalDtoService(animalRepositoryMock, animalDTO);
-        Date theDate = new Date(123, 0, 1, 12, 0, 0); // Note: Year 123 is equivalent to 2023
+        Date theDate; // Note: Year 123 is equivalent to 2023
+        theDate = new Date(123, 0, 1, 12, 0, 0);
 
         List<Animal> animals = new ArrayList<>();
         animals.add(new Animal(1L, Kind.DOG, "Fido", 2, 5.0, theDate));
@@ -71,13 +73,12 @@ public class AnimalDtoServiceTest {
 
         // When
         List<AnimalDTO> actual = subject.findAllDTO();
-        String bubba = "bubba";
 
         // Then
         System.out.println("expected:  " + expected);
         System.out.println("actual:  " + actual);
-        Assert.assertEquals(expected, actual);
-        Assert.assertEquals(2, actual.size());
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(2, actual.size());
     }
 
 
