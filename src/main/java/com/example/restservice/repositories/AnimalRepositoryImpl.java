@@ -91,7 +91,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     //TODO Is this method doing too much?  Should it be broken up into smaller methods?
     @Override
     public String saveAnimalsToFile() throws Exception {
-        String fileInfo = "";
+        String fileInfo = "no info, yet";
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(findAll());
         log.info("json content to write to file is: " + json);
@@ -108,7 +108,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
             String humanReadableLastModifiedDate = sdf.format(lastModifiedDate);
             long fileSize = file.length();
             fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
-            System.out.println(fileInfo);
+            System.out.println("File info of saved json file:  " +  fileInfo);
         } catch (Exception e) {
             log.info("Failed to save animals to JSON file", e);
             throw new Exception("Failed to save animals to JSON file", e);

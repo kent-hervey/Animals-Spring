@@ -4,9 +4,9 @@ import com.example.restservice.models.Animal;
 import java.util.List;
 
 public interface AnimalRepository {
+    //This constant might be moved back to the AnimalRepositoryImpl
     String DATA_PERSISTENT_ANIMALS_JSON = "data/persistent_animals.json";
 
-    //find all animals
     List<Animal> findAll();
 
     Animal findByIdOrElse(Long id);
@@ -19,6 +19,5 @@ public interface AnimalRepository {
 
     void delete(Animal existingAnimal);
 
-    //TODO Is this method doing too much?  Should it be broken up into smaller methods?
     String saveAnimalsToFile() throws Exception;
 }
