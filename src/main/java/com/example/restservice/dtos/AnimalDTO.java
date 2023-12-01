@@ -1,7 +1,7 @@
 package com.example.restservice.dtos;
 
 import com.example.restservice.enums.Kind;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +12,13 @@ public class AnimalDTO {
     private Kind kind;
     private Integer age;
     private Double weight;
-    private Date modifiedDate;
+    private LocalDateTime modifiedDate;
     private String feedType;
 
     public AnimalDTO() {
     }
     //Do we need all three of these constructors?
-    public AnimalDTO(Long id, String name, Kind kind, Integer age, Double weight, Date modifiedDate, String feedType) {
+    public AnimalDTO(Long id, String name, Kind kind, Integer age, Double weight, LocalDateTime modifiedDate, String feedType) {
         this.id = id;
         this.name = name;
         this.kind = kind;
@@ -27,7 +27,7 @@ public class AnimalDTO {
         this.modifiedDate = modifiedDate;
         this.feedType = feedType;
     }
-    public AnimalDTO(String name, Kind kind, Integer age, Double weight, Date modifiedDate, String feedType) {
+    public AnimalDTO(String name, Kind kind, Integer age, Double weight, LocalDateTime modifiedDate, String feedType) {
         this.name = name;
         this.kind = kind;
         this.age = age;
@@ -83,11 +83,11 @@ public class AnimalDTO {
         this.weight = weight;
     }
 
-    public Date getModifiedDate() {
+    public LocalDateTime getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
+    public void setModifiedDate(LocalDateTime modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

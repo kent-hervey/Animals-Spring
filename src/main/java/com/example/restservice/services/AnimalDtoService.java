@@ -6,7 +6,6 @@ import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
 import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
