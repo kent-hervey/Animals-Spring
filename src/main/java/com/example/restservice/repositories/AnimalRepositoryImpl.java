@@ -28,9 +28,9 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         this.animals = new ArrayList<>();
 
         // Load the Animals List from the JSON file
-        try (InputStream is = new FileInputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
+        try (InputStream inputStream = new FileInputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
             ObjectMapper mapper = new ObjectMapper();
-            this.animals = mapper.readValue(is, new TypeReference<List<Animal>>() {
+            this.animals = mapper.readValue(inputStream, new TypeReference<List<Animal>>() {
             });
         } catch (Exception e) {
             throw new RuntimeException("Failed to load fake database of animals", e);
