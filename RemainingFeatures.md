@@ -6,7 +6,7 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] change repository --read file-- so if the new json file cannot be found, it will use originalSeedData.json in resources, then save the file to the proper location in data directory
 - [ ] Add handler methods/endpoints that yield metadata such as number of animals, average age...etc
 - [ ] Add a new endpoint that returns a list of animals that meet certain criteria
-- [ ] change from DATE to LocalDateTime
+- [ ] change from DATE to ZonedDateTime, or Instant or LocalDateTime
 - [ ] fix the controller, so it returns something helpful if the submitted kind is invalid aka Using a custom http response entity to return a custom error message 
 - [ ] Add a custom exception handler to handle exceptions
 - [ ] Add Integration tests with Spring Boot Test
