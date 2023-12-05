@@ -1,7 +1,7 @@
 package com.example.restservice.models;
 
 import com.example.restservice.enums.Kind;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class Animal {
@@ -10,7 +10,7 @@ public class Animal {
     private String name;
     private Integer age;
     private Double weight;
-    private LocalDateTime modifiedDate;
+    private ZonedDateTime modifiedDate;
 
     public Animal() {
     }
@@ -22,7 +22,7 @@ public class Animal {
         this.weight = weight;
     }
 
-    public Animal(Long id, Kind kind, String name, Integer age, Double weight, LocalDateTime modifiedDate) {
+    public Animal(Long id, Kind kind, String name, Integer age, Double weight, ZonedDateTime modifiedDate) {
         this.id = id;
         this.kind = kind;
         this.name = name;
@@ -56,7 +56,7 @@ public class Animal {
     }
 
     public void setModifiedDate() {
-        this.modifiedDate = LocalDateTime.now();
+        this.modifiedDate = ZonedDateTime.now();
     }
 
     public void setWeight(Double weight) {
@@ -76,7 +76,7 @@ public class Animal {
         this.kind = kind;
     }
 
-    public LocalDateTime getModifiedDate() {
+    public ZonedDateTime getModifiedDate() {
         return modifiedDate;
     }
 

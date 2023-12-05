@@ -1,6 +1,6 @@
 package com.example.coffeeness;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import org.springframework.cglib.core.Local;
 
 
@@ -10,17 +10,17 @@ public class Coffee {
     // Getters and setters
     private String name;
     private String brand;
-    private LocalDateTime date;
+    private ZonedDateTime date;
 
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
     }
 
