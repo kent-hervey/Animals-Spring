@@ -107,4 +107,8 @@ public class Animal {
                 ", modifiedDate=" + modifiedDate +
                 '}';
     }
+    //This method for testing purposes only
+    public void setModifiedDateToNull() {
+        this.modifiedDate = null;
+    }
 }
