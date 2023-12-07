@@ -31,10 +31,8 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         try (InputStream inputStream = new FileInputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
             ObjectMapper mapper = new ObjectMapper();
             this.animals = mapper.readValue(inputStream, new TypeReference<List<Animal>>() {
-                String debuggery = "debuggery";
             });
         } catch (Exception e) {
-            String debuggery2 = "debuggery2";
             throw new RuntimeException("Failed to load fake database of animals", e);
         }
     }
