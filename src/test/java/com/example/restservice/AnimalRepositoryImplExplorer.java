@@ -29,7 +29,7 @@ class AnimalRepositoryImplExplorer {
 
 //    @Test
 //    void confirmExtractedAnimalsFromJsonFileCreatesProperListOfAnimals() {
-//        //Ensure method should work regardless of Class, Instant, LocalDateTime, or ZonedDateTime
+//        //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
 //        AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
 //
 //        String JsonPersisentFile = DATA_PERSISTENT_ANIMALS_JSON;
@@ -53,7 +53,7 @@ class AnimalRepositoryImplExplorer {
     //then it writes the JSON String back to the same JSON file
     @Test
     void confirmExtractedAnimalsSavesToJsonFile() throws JsonProcessingException, FileNotFoundException {
-        //Ensure method should work regardless of Class, Instant, LocalDateTime, or ZonedDateTime
+        //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
         AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
 
         String JsonPersistentFile = "src/test/resources/persistent_animals.json";

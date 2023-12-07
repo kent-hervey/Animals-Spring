@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -101,12 +100,12 @@ public class AnimalRepositoryImpl implements AnimalRepository {
             os.write(json.getBytes());
             log.info("Animals saved to file.");
             // Get the last save modified date and file size
-            File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
-            long lastModified = file.lastModified();
+            //File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
+            //long lastModified = file.lastModified();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            //ZonedDateTime lastModifiedDate = new ZonedDateTime(lastModified);
+            //Date lastModifiedDate = new Date(lastModified);
             //String humanReadableLastModifiedDate = sdf.format(lastModifiedDate);
-            long fileSize = file.length();
+            //long fileSize = file.length();
             //fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
             //System.out.println("File info of saved json file:  " +  fileInfo);
         } catch (Exception e) {
