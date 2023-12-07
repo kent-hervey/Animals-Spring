@@ -110,15 +110,4 @@ public class AnimalController {
     public String getKinds() {
         return enumService.fetchKindsStrings();
     }
-
-    @GetMapping("/coffee")
-    public String getCoffee() {
-
-
-        return "hello1";
-
-    }
-
-
-
 }
