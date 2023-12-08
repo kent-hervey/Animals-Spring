@@ -81,7 +81,8 @@ class AnimalRepositoryImplExplorer {
         String debug2 = "two";
 
         //Below converts the List<Animal> to a JSON String
-        String animalsAsJsonString = objectMapperToJson.writeValueAsString(animals);
+        String animalsAsJsonString;
+        animalsAsJsonString = objectMapperToJson.writeValueAsString(animals);
 
         //create an output stream to write the JSON String to the JSON file
         //Create a new instance of FileOutputStream with the JsonPersitentFile path as an argument.

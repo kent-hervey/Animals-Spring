@@ -103,7 +103,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
             //File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
             //long lastModified = file.lastModified();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            //Date lastModifiedDate = new Date(lastModified);
+            //Instant lastModifiedDate = new Date(lastModified);
             //String humanReadableLastModifiedDate = sdf.format(lastModifiedDate);
             //long fileSize = file.length();
             //fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
