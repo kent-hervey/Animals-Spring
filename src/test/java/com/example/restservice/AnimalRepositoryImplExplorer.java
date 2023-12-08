@@ -27,24 +27,25 @@ class AnimalRepositoryImplExplorer {
     void setUp() {
     }
 
-//    @Test
-//    void confirmExtractedAnimalsFromJsonFileCreatesProperListOfAnimals() {
-//        //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
-//        AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
-//
-//        String JsonPersisentFile = DATA_PERSISTENT_ANIMALS_JSON;
-//        JsonPersisentFile = "src/test/resources/persistent_animals.json";
-//
-//        try (InputStream inputStream = new FileInputStream(JsonPersisentFile)) {
-//            ObjectMapper objectMapperFromJson = new ObjectMapper();
-//            animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
-//            });
-//        } catch (Exception e) {
-//            throw new RuntimeException("Failed to load fake database of animals", e);
-//        }
-//
-//        animals.stream().forEach(System.out::println);
-//    }
+    @Test
+    void confirmExtractedAnimalsFromJsonFileCreatesProperListOfAnimals() {
+        //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
+        AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
+
+        String JsonPersisentFile = DATA_PERSISTENT_ANIMALS_JSON;
+        JsonPersisentFile = "src/test/resources/persistent_animals.json";
+
+        try (InputStream inputStream = new FileInputStream(JsonPersisentFile)) {
+            ObjectMapper objectMapperFromJson = new ObjectMapper();
+            objectMapperFromJson.findAndRegisterModules();
+            animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
+            });
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load fake database of animals", e);
+        }
+
+        animals.stream().forEach(System.out::println);
+    }
 
     //the below mimics the code in the AnimalRepositoryImpl main directory
     //opens the JSON file, reads the JSON file, converts the JSON file to a List<Animal>, and prints the List<Animal>
@@ -59,6 +60,7 @@ class AnimalRepositoryImplExplorer {
         String JsonPersistentFile = "src/test/resources/persistent_animals.json";
         try (InputStream inputStream = new FileInputStream(JsonPersistentFile)) {
             ObjectMapper objectMapperFromJson = new ObjectMapper();
+            objectMapperFromJson.findAndRegisterModules();
             this.animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
             });
         } catch (Exception e) {
@@ -77,6 +79,7 @@ class AnimalRepositoryImplExplorer {
 
         // a new instance of the Jackson ObjectMapper class.  This will be used to convert the List<Animal> to a JSON String
         ObjectMapper objectMapperToJson = new ObjectMapper();
+        objectMapperToJson.findAndRegisterModules();
 
         String debug2 = "two";
 
@@ -103,6 +106,7 @@ class AnimalRepositoryImplExplorer {
         String JsonPersistentFile = "src/test/resources/persistent_animals.json";
         try (InputStream inputStream = new FileInputStream(JsonPersistentFile)) {
             ObjectMapper objectMapperFromJson = new ObjectMapper();
+            objectMapperFromJson.findAndRegisterModules();
             this.animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
             });
         } catch (Exception e) {
