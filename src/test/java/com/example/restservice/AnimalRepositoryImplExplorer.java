@@ -6,11 +6,16 @@ import com.example.restservice.repositories.AnimalRepositoryImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +27,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalRepositoryImplExplorer {
     List<Animal> animals = new ArrayList<>();
-
-    @BeforeEach
-    void setUp() {
-    }
 
     @Test
     void confirmExtractedAnimalsFromJsonFileCreatesProperListOfAnimals() {
@@ -53,14 +54,15 @@ class AnimalRepositoryImplExplorer {
     //then it converts the List<Animal> to a JSON String
     //then it writes the JSON String back to the same JSON file
     @Test
-    void confirmExtractedAnimalsSavesToJsonFile() throws JsonProcessingException, FileNotFoundException {
+    void confirmExtractedAnimalsSavesToJsonFile() throws JsonProcessingException {
         //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
         AnimalRepositoryImpl animalRepositoryImpl = new AnimalRepositoryImpl();
 
         String JsonPersistentFile = "src/test/resources/persistent_animals.json";
         try (InputStream inputStream = new FileInputStream(JsonPersistentFile)) {
-            ObjectMapper objectMapperFromJson = new ObjectMapper();
-            objectMapperFromJson.findAndRegisterModules();
+            ObjectMapper objectMapperFromJson = new ObjectMapper().findAndRegisterModules();
+            //findAndRegisterModules needed when using a date class other than Date
+            //objectMapperFromJson.findAndRegisterModules();
             this.animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
             });
         } catch (Exception e) {
@@ -81,8 +83,6 @@ class AnimalRepositoryImplExplorer {
         ObjectMapper objectMapperToJson = new ObjectMapper();
         objectMapperToJson.findAndRegisterModules();
 
-        String debug2 = "two";
-
         //Below converts the List<Animal> to a JSON String
         String animalsAsJsonString;
         animalsAsJsonString = objectMapperToJson.writeValueAsString(animals);
@@ -97,7 +97,6 @@ class AnimalRepositoryImplExplorer {
         } catch (Exception e) {
             throw new RuntimeException("Failed to save fake database of animals", e);
         }
-        String debug3 = "three";
     }
 
     @Test
@@ -127,26 +126,17 @@ class AnimalRepositoryImplExplorer {
         }
     }
 
-
     @Test
-    void findAll() {
+    void confirmJsonFileMetaDataIsUpdated() throws JsonProcessingException {
+        String JsonPersistentFile = "src/test/resources/persistent_animals.json";
+
+        File file = new File(JsonPersistentFile);
+        long lastModified = file.lastModified();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String humanReadableLastModifiedDate = sdf.format(lastModified);
+        long fileSize = file.length();
+        String fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
+        System.out.println("File info of saved json file:  " +  fileInfo);
     }
 
-
-
-
-    @Test
-    void findByIdOrElse() {
-    }
-
-    @Test
-    void findById() {
-        AnimalRepository animalRepository = new AnimalRepositoryImpl();
-        Animal animal = animalRepository.findById(1L);
-        assertEquals(1L, animal.getId());
-    }
-
-    @Test
-    void save() {
-    }
 }
