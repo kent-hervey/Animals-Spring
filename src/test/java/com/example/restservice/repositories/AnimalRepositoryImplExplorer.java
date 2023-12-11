@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.example.restservice.repositories;
 
 import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
@@ -127,7 +127,7 @@ class AnimalRepositoryImplExplorer {
     }
 
     @Test
-    void confirmJsonFileMetaDataIsUpdated() throws JsonProcessingException {
+    void confirmJsonFileMetaDataIsUpdated()  {
         String JsonPersistentFile = "src/test/resources/persistent_animals.json";
 
         File file = new File(JsonPersistentFile);
