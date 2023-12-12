@@ -1,8 +1,8 @@
 package com.example.restservice.utilities;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger; //not needed if using @Slf4j
-import org.slf4j.LoggerFactory; //not needed if using @Slf4j
+import org.slf4j.Logger; //not needed if using Lombok's @Slf4j
+import org.slf4j.LoggerFactory; //not needed if using Lombok's @Slf4j
 
 //@Slf4j
 public class DemoLogging {

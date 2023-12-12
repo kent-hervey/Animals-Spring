@@ -3,6 +3,7 @@ package com.example.restservice.dtos;
 import com.example.restservice.enums.Kind;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class AnimalDTO {
     private LocalDateTime modifiedDate;
     private String feedType;
 
+    @Autowired
     public AnimalDTO() {
     }
     //Do we need all three of these constructors?
