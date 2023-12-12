@@ -6,7 +6,7 @@ import com.example.restservice.models.Animal;
 import com.example.restservice.repositories.AnimalRepository;
 import com.example.restservice.repositories.AnimalRepositoryImpl;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class AnimalDtoService {
     AnimalRepository animalRepository;
     AnimalDTO animalDTO = new AnimalDTO();
 
-    private final Map<Kind, String> kindToFeedTypeMap = new HashMap<>();
+    private final Map<Kind, String> kindToFeedTypeMap = new EnumMap<>(Kind.class);
 
     //TODO Does this method need to be called in constructor and in method findAllDTO()?
     public AnimalDtoService(AnimalRepository animalRepository, AnimalDTO animalDTO) {

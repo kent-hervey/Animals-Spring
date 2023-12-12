@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +28,8 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 
         // Load the Animals List from the JSON file
         try (InputStream inputStream = new FileInputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
-            ObjectMapper mapper = new ObjectMapper();
-            this.animals = mapper.readValue(inputStream, new TypeReference<List<Animal>>() {
+            ObjectMapper objectMapperFromJson = new ObjectMapper().findAndRegisterModules();
+            this.animals = objectMapperFromJson.readValue(inputStream, new TypeReference<List<Animal>>() {
             });
         } catch (Exception e) {
             throw new RuntimeException("Failed to load fake database of animals", e);
@@ -68,7 +67,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         log.info("List of animal Ids:  " + animalsIds);
         Integer maxId = findAll().stream()
                 .map(a -> a.getId().intValue())
-                .max(Integer::compare).get();
+                .max(Integer::compare).orElseThrow();
         log.info("Max Id:  " + maxId);
         animal.setId((long) (maxId + 1));
         animals.add(animal);
@@ -92,27 +91,28 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     @Override
     public String saveAnimalsToFile() throws Exception {
         String fileInfo;
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(findAll());
-        log.info("json content to write to file is: " + json);
+        ObjectMapper objectMapperToJson = new ObjectMapper().findAndRegisterModules();
+        String jsonStringAnimals = objectMapperToJson.writeValueAsString(findAll());
+        log.info("json content to write to file is: " + jsonStringAnimals);
         log.info("DATA_PERSISTENT_ANIMALS_JSON is: " + DATA_PERSISTENT_ANIMALS_JSON);
+
         // Write the JSON to the file
         try (OutputStream os = new FileOutputStream(DATA_PERSISTENT_ANIMALS_JSON)) {
-            os.write(json.getBytes());
+            os.write(jsonStringAnimals.getBytes());
             log.info("Animals saved to file.");
             // Get the last save modified date and file size
-            File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
-            long lastModified = file.lastModified();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date lastModifiedDate = new Date(lastModified);
-            String humanReadableLastModifiedDate = sdf.format(lastModifiedDate);
-            long fileSize = file.length();
-            fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
-            System.out.println("File info of saved json file:  " +  fileInfo);
         } catch (Exception e) {
             log.info("Failed to save animals to JSON file", e);
             throw new Exception("Failed to save animals to JSON file", e);
         }
+
+        File file = new File(DATA_PERSISTENT_ANIMALS_JSON);
+        long lastModified = file.lastModified();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String humanReadableLastModifiedDate = sdf.format(lastModified);
+        long fileSize = file.length();
+        fileInfo = "File size: " + fileSize + " bytes; last modified: " + humanReadableLastModifiedDate;
+        log.info("File info of saved json file:  " +  fileInfo);
         return "Animals saved to file via Repository.\n Confirmed as " + fileInfo;
     }
 }

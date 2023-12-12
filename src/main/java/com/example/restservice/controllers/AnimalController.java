@@ -52,7 +52,7 @@ public class AnimalController {
         return ResponseEntity.ok(animal);
     }
 
-    @GetMapping("/animalsWithFeedType")         
+    @GetMapping("/animalsWithFeedType")
     public ResponseEntity<List<AnimalDTO>> getAnimalWithFeedType() {
         List<AnimalDTO> animalsDTO;
         animalsDTO = animalDtoService.findAllDTO();
@@ -110,9 +110,4 @@ public class AnimalController {
     public String getKinds() {
         return enumService.fetchKindsStrings();
     }
-
-
-
-
-
 }
