@@ -1,31 +1,22 @@
 package com.example.restservice.repositories;
 
 import com.example.restservice.models.Animal;
-import com.example.restservice.repositories.AnimalRepository;
-import com.example.restservice.repositories.AnimalRepositoryImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.example.restservice.repositories.AnimalRepository.DATA_PERSISTENT_ANIMALS_JSON;
-import static org.junit.jupiter.api.Assertions.*;
 
-class AnimalRepositoryImplExplorer {
+class AnimalRepositoryImplExplorerIT {
     List<Animal> animals = new ArrayList<>();
 
     @Test
