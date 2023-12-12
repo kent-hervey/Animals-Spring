@@ -9,14 +9,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Repository;
 
 //TODO:  Experiment with using interfaces here and elsewhere.  See https://www.baeldung.com/spring-data-repositories and
@@ -71,7 +67,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         log.info("List of animal Ids:  " + animalsIds);
         Integer maxId = findAll().stream()
                 .map(a -> a.getId().intValue())
-                .max(Integer::compare).get();
+                .max(Integer::compare).orElseThrow();
         log.info("Max Id:  " + maxId);
         animal.setId((long) (maxId + 1));
         animals.add(animal);

@@ -2,7 +2,6 @@ package com.example.restservice.dtos;
 
 import com.example.restservice.enums.Kind;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 import org.springframework.stereotype.Component;
 
