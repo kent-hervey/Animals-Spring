@@ -23,8 +23,7 @@ class AnimalRepositoryImplExplorerIT {
     void confirmExtractedAnimalsFromJsonFileCreatesProperListOfAnimals() {
         //Ensure method should work regardless of Class, Instant, LocalDateTime, or Date
 
-        String jsonPersistentFile = DATA_PERSISTENT_ANIMALS_JSON;
-        jsonPersistentFile = "src/test/resources/persistent_animals.json";
+        String jsonPersistentFile = "src/test/resources/persistent_animals.json";
 
         try (InputStream inputStream = new FileInputStream(jsonPersistentFile)) {
             ObjectMapper objectMapperFromJson = new ObjectMapper();
