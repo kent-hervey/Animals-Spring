@@ -8,6 +8,8 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] Add a new endpoint that returns a list of animals that meet certain criteria
 - [ ] change from DATE to ZonedDateTime, or Instant or LocalDateTime
   - [X] 12/12/23 master now uses LocalDateTime.  Plan is to use ZonedDateTime in a branch and Instant in another branch and tag them for longevity
+  - [X] 12/15/23 master now uses ZonedDateTime.  Plan is to use Instant in a branch and tag them for longevity
+  - [ ] Update to use Instant, then keep that moving forward
 - [ ] fix the controller, so it returns something helpful if the submitted kind is invalid aka Using a custom http response entity to return a custom error message 
 - [ ] Add a custom exception handler to handle exceptions
 - [ ] Add Integration tests with Spring Boot Test
