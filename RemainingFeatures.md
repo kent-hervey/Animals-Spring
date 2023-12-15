@@ -7,6 +7,7 @@ List of things to add to code--most of these need scratch code already implement
 - [ ] Add handler methods/endpoints that yield metadata such as number of animals, average age...etc
 - [ ] Add a new endpoint that returns a list of animals that meet certain criteria
 - [ ] change from DATE to ZonedDateTime, or Instant or LocalDateTime
+  - [X] 12/12/23 master now uses LocalDateTime.  Plan is to use ZonedDateTime in a branch and Instant in another branch and tag them for longevity
 - [ ] fix the controller, so it returns something helpful if the submitted kind is invalid aka Using a custom http response entity to return a custom error message 
 - [ ] Add a custom exception handler to handle exceptions
 - [ ] Add Integration tests with Spring Boot Test
@@ -17,7 +18,7 @@ List of things to add to code--most of these need scratch code already implement
   - [ ] //TODO see if this could also work:  if (enumKind.equalsIgnoreCase(kind)
   - [X] In controller //TODO change Food to WithFeedType...11/21/23
   - [X] See Repository for use of @Repository and interfaces
-  - [ ] Animal repository method seems too long: saveAnimalsToFile()
+  - [ ] Animal repository method seems too long: saveAnimalsToFile() was partitioned in the version to implement LocalDateTime on 12/12/23; still needs to be refactored to shorter by possibly calling another method for the file metadata
   - [ ] In controller handle invalid kind
   - [ ] In controller handle invalid id coming in
   - [X] Add handler method to retun all valid kinds....11/21/23
